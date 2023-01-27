@@ -16,7 +16,6 @@ const io = new Server(server, {
   }
 });
 
-const mess = 'aqui foi'
 
 io.on("connection", (socket) => {
   console.log('User connected, id:', socket.id);
