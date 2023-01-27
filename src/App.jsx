@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
 import Chat from './Chat'
 
-const socket = io.connect('https://chatdeploy-production.up.railway.app')
+const socket = io.connect('mongodb://mongo:HVYaq85NgPPycgPVtixr@containers-us-west-96.railway.app:7963')
 
 
 function App() {
