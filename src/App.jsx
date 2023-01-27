@@ -2,12 +2,11 @@ import { useState } from 'react'
 import io from 'socket.io-client'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import './App.css'
 import Chat from './Chat'
 
-const porta = process.env.PORT
-const socket = io.connect(`http://0.0.0.0:${porta}`)
-
+const socket = io.connect('http://localhost:3001')
 
 
 function App() {
