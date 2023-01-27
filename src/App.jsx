@@ -2,7 +2,6 @@ import { useState } from 'react'
 import io from 'socket.io-client'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import './App.css'
 import Chat from './Chat'
 
