@@ -1,45 +1,55 @@
 import { useState } from 'react'
-import logo from './logo.svg'
+import io from 'socket.io-client'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import './App.css'
+import Chat from './Chat'
+
+const socket = io.connect('http://localhost:3001')
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [room, setRoom] = useState('')
+  const [name, setName] = useState('')
+  const [showChat, setShowChat] = useState(false)
+
+
+  
+
+
+  const joinRoom = () => {
+    if (!!name && !!room) {
+      socket.emit("join_room", room)
+      setShowChat(true)
+      toast.success('Você entrou na Sala!', {icon: "🦎", theme: 'light'})
+    }
+  }
+
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+  <div className="App">
+    {!showChat ? (
+       <div className='joinChatContainer'>
+       <h2>Entre em um Chat &#129422;</h2>
+      <input type="text" placeholder='Seu nome'
+       onChange={(event) => {setName(event.target.value)}}
+       id="yourName"/>
+      <input type="text" placeholder='ID da Sala'
+       onChange={(event) => {setRoom(event.target.value)}}
+       onKeyDown={(event) => {event.key == "Enter" && joinRoom();}}
+       />
+      <button onClick={joinRoom}>Entrar</button>
+     </div>
+
+    ) : (<Chat socket={socket} name={name} room={room} />)
+  
+      }
+    
+      <ToastContainer position='top-center' closeOnClick pauseOnFocusLoss={false} pauseOnHover={false}/>
+  </div>
   )
 }
+
 
 export default App
