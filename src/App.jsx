@@ -6,7 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
 import Chat from './Chat'
 
+const PORT = process.env.PORT
 const socket = io.connect(`http://0.0.0.0:${PORT}`)
+
 
 
 function App() {
