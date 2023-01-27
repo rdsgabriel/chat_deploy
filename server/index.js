@@ -37,6 +37,6 @@ io.on("connection", (socket) => {
 
 })
 
-server.listen(`0.0.0.0`, () => {
+server.listen(teste, () => {
   console.log('Server running')
 });
