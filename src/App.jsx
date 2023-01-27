@@ -6,8 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
 import Chat from './Chat'
 
-const socket = io.connect('http://localhost:3001')
-
+const endpoint = 'https://chatdeploy-production.up.railway.app'
+const socket = io(endpoint)
+//
 
 function App() {
   const [room, setRoom] = useState('')
