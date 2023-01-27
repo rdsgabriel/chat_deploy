@@ -11,7 +11,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://chatdeploy-production.up.railway.app/",
+    origin: "https://chatdeploy-production.up.railway.app",
     methods: ['GET', 'POST'],
   }
 });
