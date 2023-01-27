@@ -37,6 +37,6 @@ io.on("connection", (socket) => {
 
 })
 
-server.listen({$PORT}, () => {
+server.listen(3001, () => {
   console.log('Server running')
 });
